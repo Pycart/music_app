@@ -103,6 +103,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+LOGIN_REDIRECT_URL = '/'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -110,5 +111,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
 FMA_API_KEY = 'Q7W54CRBAQS4CEPZ'
+
+CLIENT_ID = '881472141552-28a617mc6mlcku36hn11bgfq092tse6t.apps.googleusercontent.com'
+CLIENT_SECRET = 'IgPulMYdEcaCyydWMDGk2ABa'
+CLIENT_KEY = 'AIzaSyD47UWb9CXqnNTgLvvahUxQjEuy1EF3z14'

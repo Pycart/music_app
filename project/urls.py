@@ -17,11 +17,26 @@ from django.conf.urls import include, url, patterns
 from django.contrib import admin
 from django.conf import settings
 
+from django.views.generic.edit import CreateView
+from main.forms import CustomUserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'main.views.home'),
     url(r'^artist_list/$', 'main.views.artist_list'),
     url(r'^artists/(?P<artist_id>\d+)/$', 'main.views.artist_detail'),
-]
+
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+
+    url(r'^google_login/$', 'main.views.google_login'),
+    url(r'^google_auth/$', 'main.views.google_auth'),
+
+    url(r'^login/$','django.contrib.auth.views.login'),
+    url(r'^logout/$','django.contrib.auth.views.logout'),
+    url(r'^register/$', CreateView.as_view(template_name='register.html',
+                                           form_class=CustomUserCreationForm,
+                                           success_url='/')),
+    ]
 
 if settings.DEBUG:
     urlpatterns = patterns('',

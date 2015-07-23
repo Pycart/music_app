@@ -1,0 +1,11 @@
+
+{% if user.is_anonymous %}
+	
+	<a href="{% url 'django.contrib.auth.views.login' %}">Login</a>
+
+{% else %}
+	Current User: {{ request.user }}
+	</br>
+	<a href="{% url 'django.contrib.auth.views.logout' %}?next=/">Logout</a>
+	
+{% endif %}
