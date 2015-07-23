@@ -38,8 +38,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField('last name', max_length=30, blank=True, null=True)
     is_staff = models.BooleanField('staff status', default=False)
     is_active = models.BooleanField('active', default=True)
-    favorite_genre = models.ForeignKey('main.Genres', null=True)
     date_joined = models.DateTimeField('date joined', auto_now_add=True)
+
+    oauth_token = models.CharField(max_length=200)
+    oauth_secret = models.CharField(max_length=200)
+
+    favorite_genre = models.ForeignKey('main.Genres', null=True)
+    
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
@@ -109,15 +114,15 @@ class Albums(models.Model):
         verbose_name_plural = 'Albums'
 
 
-class Tracks(models.Model):
-    track_id = models.IntegerField(primary_key=True)
-    track_title = models.CharField(max_length=255, null=True)
-    album = models.ForeignKey('main.Albums', null=True)
-    track_file = models.FileField(upload_to='tracks', null=True)
+# class Tracks(models.Model):
+#     track_id = models.IntegerField(primary_key=True)
+#     track_title = models.CharField(max_length=255, null=True)
+#     album = models.ForeignKey('main.Albums', null=True)
+#     track_file = models.FileField(upload_to='tracks', null=True)
 
-    def __unicode__(self):
-        return self.track_title
+#     def __unicode__(self):
+#         return self.track_title
 
-    class Meta:
-        verbose_name = 'Tracks'
-        verbose_name_plural = 'Tracks'
+#     class Meta:
+#         verbose_name = 'Tracks'
+#         verbose_name_plural = 'Tracks'

@@ -19,8 +19,14 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'main.views.home'),
     url(r'^artist_list/$', 'main.views.artist_list'),
     url(r'^artists/(?P<artist_id>\d+)/$', 'main.views.artist_detail'),
+    url(r'^login/$', 'django.contrib.auth.views.login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout'),
+    url(r'^google_login/$', 'main.views.google_login'),
+    url(r'^google_auth/$', 'main.views.google_authenticate'),
+
 ]
 
 if settings.DEBUG:
