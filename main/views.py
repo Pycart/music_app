@@ -53,6 +53,7 @@ def google_login(request):
     return HttpResponseRedirect(url)
 
 def google_authenticate(request):
+    #convert urllib to requests
     parser = Http()
     login_failed_url = '/'
     if 'error' in request.GET or 'code' not in request.GET:
@@ -73,7 +74,14 @@ def google_authenticate(request):
     resp, content = parser.request("https://www.googleapis.com/oauth2/v1/userinfo?access_token={accessToken}".format(accessToken=token_data['access_token']))
     #this gets the google profile!!
     google_profile = jsonDecode(content)
+
+    #create new user 
+    
+    #add user token to customuser object field
+    #add user secret to customer object field
+
     #log the user in-->
-    #HERE YOU LOG THE USER IN, OR ANYTHING ELSE YOU WANT
-    #THEN REDIRECT TO PROTECTED PAGE
+
+
+    #redirect user, possibly to profile page
     return HttpResponseRedirect('/home')
