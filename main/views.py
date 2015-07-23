@@ -1,21 +1,14 @@
-<<<<<<< HEAD
 # Python
 import oauth2 as oauth
 import cgi
 
 # Django
-=======
-import oauth2 as oauth
-import cgi
-
->>>>>>> e87cea662c65577e2212806ddd054e9c262ad7ae
 from django.shortcuts import render, render_to_response
-from main.models import Artists, Albums, CustomUser
+from main.models import Artists, Albums
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
-<<<<<<< HEAD
 from main.models import CustomUser
 from django.contrib.auth.decorators import login_required
 import requests
@@ -28,22 +21,6 @@ def home(request):
     context = {}
 
     return render_to_response('index.html', context, context_instance=RequestContext(request))
-=======
-from django.contrib.auth.decorators import login_required
-from django.conf import settings
-
-import urllib
-
-request_token_url = 'https://accounts.google.com/o/oauth2/auth'
-access_token_url = 'https://www.googleapis.com/oauth2/v3/token'
-
-def home(request):
-	context = {}
-
-	context['logged_in'] = request.user.is_authenticated()
-
-	return render_to_response('index.html', context, context_instance=RequestContext(request))
->>>>>>> e87cea662c65577e2212806ddd054e9c262ad7ae
 
 
 def artist_list(request):
@@ -65,7 +42,6 @@ def google_login(request):
     token_request_uri = "https://accounts.google.com/o/oauth2/auth"
     response_type = "code"
     client_id = settings.CLIENT_ID
-<<<<<<< HEAD
     redirect_uri = "http://127.0.0.1:8000/google_auth/"
     scope = "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
     url = "{token_request_uri}?response_type={response_type}&client_id={client_id}&redirect_uri={redirect_uri}&scope={scope}".format(
@@ -74,27 +50,13 @@ def google_login(request):
         client_id=client_id,
         redirect_uri=redirect_uri,
         scope=scope)
-=======
-    redirect_uri = "http://127.0.0.1:8000/google_auth"
-    scope = "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
-    url = "{token_request_uri}?response_type={response_type}&client_id={client_id}&redirect_uri={redirect_uri}&scope={scope}".format(
-        token_request_uri = token_request_uri,
-        response_type = response_type,
-        client_id = client_id,
-        redirect_uri = redirect_uri,
-        scope = scope)
->>>>>>> e87cea662c65577e2212806ddd054e9c262ad7ae
     return HttpResponseRedirect(url)
 
 def google_authenticate(request):
     parser = Http()
     login_failed_url = '/'
     if 'error' in request.GET or 'code' not in request.GET:
-<<<<<<< HEAD
         return HttpResponseRedirect('{loginfailed}'.format(loginfailed=login_failed_url))
-=======
-        return HttpResponseRedirect('{loginfailed}'.format(loginfailed = login_failed_url))
->>>>>>> e87cea662c65577e2212806ddd054e9c262ad7ae
 
     access_token_uri = 'https://accounts.google.com/o/oauth2/token'
     redirect_uri = "http://127.0.0.1:8000/google_auth"
@@ -106,11 +68,7 @@ def google_authenticate(request):
         'grant_type':'authorization_code'
     })
     headers={'content-type':'application/x-www-form-urlencoded'}
-<<<<<<< HEAD
     resp, content = parser.request(access_token_uri, method='POST', body=params, headers=headers)
-=======
-    resp, content = parser.request(access_token_uri, method = 'POST', body = params, headers = headers)
->>>>>>> e87cea662c65577e2212806ddd054e9c262ad7ae
     token_data = jsonDecode(content)
     resp, content = parser.request("https://www.googleapis.com/oauth2/v1/userinfo?access_token={accessToken}".format(accessToken=token_data['access_token']))
     #this gets the google profile!!
