@@ -1,0 +1,7 @@
+Django==1.8.3
+MySQL-python==1.2.5
+Pillow==2.9.0
+basicauth==0.2
+python-oauth2==0.7.0
+requests==2.7.0
+wsgiref==0.1.2
