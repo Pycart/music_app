@@ -1,11 +1,19 @@
 
-{% if user.is_anonymous %}
-	
-	<a href="{% url 'django.contrib.auth.views.login' %}">Login</a>
+{% extends "base.html" %}
 
-{% else %}
-	Current User: {{ request.user }}
-	</br>
-	<a href="{% url 'django.contrib.auth.views.logout' %}?next=/">Logout</a>
-	
-{% endif %}
+{% block content %}
+
+    <div>
+
+        {% if user.is_anonymous %}
+            <a href="{% url 'django.contrib.auth.views.login' %}">login</a>
+        {% else %}
+            {{ user }}
+            </br>
+            <a href="{% url 'django.contrib.auth.views.logout' %}?next=/">logout</a>
+        {% endif %}
+
+    </div>
+    
+{% endblock %}
+

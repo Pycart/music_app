@@ -78,7 +78,7 @@ AUTH_USER_MODEL = 'main.CustomUser'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'music_app',
+        'NAME': 'git_music_app',
         'HOST': '127.0.0.1',
         'USER': 'root',
         'PASSWORD': 'root',
@@ -86,7 +86,7 @@ DATABASES = {
     }
 }
 
-
+LOGIN_REDIRECT_URL = '/'
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -112,6 +112,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 FMA_API_KEY = 'Q7W54CRBAQS4CEPZ'
+
 
 CLIENT_ID = '881472141552-28a617mc6mlcku36hn11bgfq092tse6t.apps.googleusercontent.com'
 CLIENT_SECRET = 'IgPulMYdEcaCyydWMDGk2ABa'

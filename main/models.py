@@ -38,12 +38,19 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField('last name', max_length=30, blank=True, null=True)
     is_staff = models.BooleanField('staff status', default=False)
     is_active = models.BooleanField('active', default=True)
-    favorite_genre = models.ForeignKey('main.Genres', null=True)
     date_joined = models.DateTimeField('date joined', auto_now_add=True)
 
+<<<<<<< HEAD
     oauth_token = models.CharField(max_length=255, null=True, blank=True)
     oauth_secret = models.CharField(max_length=255, null=True, blank=True)
 
+=======
+    oauth_token = models.CharField(max_length=200)
+    oauth_secret = models.CharField(max_length=200)
+
+    favorite_genre = models.ForeignKey('main.Genres', null=True)
+    
+>>>>>>> e87cea662c65577e2212806ddd054e9c262ad7ae
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
@@ -121,8 +128,15 @@ class Albums(models.Model):
 
 #     def __unicode__(self):
 #         return self.track_title
+<<<<<<< HEAD
 
 #     class Meta:
 #         verbose_name = 'Tracks'
 #         verbose_name_plural = 'Tracks'
 
+=======
+
+#     class Meta:
+#         verbose_name = 'Tracks'
+#         verbose_name_plural = 'Tracks'
+>>>>>>> e87cea662c65577e2212806ddd054e9c262ad7ae

@@ -25,7 +25,6 @@ urlpatterns = [
     url(r'^$', 'main.views.home'),
     url(r'^artist_list/$', 'main.views.artist_list'),
     url(r'^artists/(?P<artist_id>\d+)/$', 'main.views.artist_detail'),
-
     url(r'^accounts/', include('django.contrib.auth.urls')),
 
     url(r'^google_login/$', 'main.views.google_login'),
